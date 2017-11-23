@@ -6,21 +6,33 @@ import { catchError } from 'rxjs/operators';
 import { Base } from '../models/base';
 
 import { environment } from '../../environments/environment';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 @Injectable()
 export class ApiService {
-    private baseUrl = environment.apiBase;
+    private endpoint = environment.apiBase;
 
     constructor(
         private http: HttpClient
     ) { }
 
+    /**
+     * GET method
+     *
+     * @param {string} path
+     * @return {Observable<T>}
+     */
     get<T extends Base>(path: string): Observable<T> {
-        return this.http.get(this.baseUrl + path, { headers: this.headers() }).pipe(
+        return this.http.get(this.endpoint + path + '?app_id=riabox', { headers: this.headers() }).pipe(
             catchError(this.handleError)
         );
     }
 
+    /**
+     * Setup request headers
+     *
+     * @return {HttpHeaders}
+     */
     private headers(): HttpHeaders {
         var params = {
             'Content-Type': 'application/json'
@@ -29,7 +41,13 @@ export class ApiService {
         return new HttpHeaders(params);
     }
 
-    private handleError(error: HttpErrorResponse | any) {
+    /**
+     * Handle request errors
+     *
+     * @param {HttpErrorResponse | any} error
+     * @return {ErrorObservable}
+     */
+    private handleError(error: HttpErrorResponse | any): ErrorObservable {
         let errMsg: string;
 
         if (error instanceof HttpErrorResponse) {

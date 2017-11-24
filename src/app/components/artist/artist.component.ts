@@ -18,21 +18,26 @@ export class ArtistComponent implements OnInit {
     ) { }
 
     public artist: Artist;
+    public loadingEvents: boolean;
 
     ngOnInit() {
         this.route.data.subscribe((data: { user: Artist }) => {
             this.artist = data.user;
-            this.searchEvents();
+            //this.searchEvents();
         });
     }
 
     searchEvents() {
+        this.loadingEvents = true;
+
         this.eventService.upcomingByArtist(this.artist)
             .subscribe(
                 response => {
+                    this.loadingEvents = false;
                     this.artist.events = response;
                 },
                 error => {
+                    this.loadingEvents = false;
                     console.error(error);
                 }
             );

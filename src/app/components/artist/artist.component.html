@@ -1,3 +1,18 @@
-<h2>{{ artist.name }}</h2>
-
-<app-events *ngIf="artist.events" [events]="artist.events"></app-events>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="text-center">
+            <span class="thumbnail-wrapper d90 circular">
+                <img [src]="artist.thumb_url" src="assets/img/default-cover.png" alt="" width="90" height="90">
+            </span>
+        </div>
+        <div class="card card-default m-t-45 p-t-40 pull-left">
+            <div class="card-block text-center">
+                <h3>{{ artist.name }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <app-events *ngIf="artist.events && !loadingEvents" [events]="artist.events"></app-events>
+        <div *ngIf="loadingEvents">Loading events...</div>
+    </div>
+</div>

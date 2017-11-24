@@ -1,12 +1,1 @@
-<div class="card">
-    <div class="card-body">
-        <form class="row" role="form" [formGroup]="formSearch" (ngSubmit)="onSubmit()">
-            <div class="col-sm-10">
-                <input type="text" formControlName="keyword" i18n-placeholder placeholder="Search for artist name">
-            </div>
-            <div class="col-sm-2">
-                <button [disabled]="!formSearch.valid" type="submit" i18n>Search</button>
-            </div>
-        </form>
-    </div>
-</div>
+<router-outlet></router-outlet>

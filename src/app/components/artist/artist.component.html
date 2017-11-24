@@ -1,3 +1,3 @@
 <h2>{{ artist.name }}</h2>
 
-<app-events></app-events>
+<app-events *ngIf="artist.events" [events]="artist.events"></app-events>

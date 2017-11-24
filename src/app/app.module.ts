@@ -6,7 +6,6 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArtistModule } from './components/artist/artist.module';
-import { ArtistService } from './models/artist/artist.service';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -24,7 +23,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         CoreModule,
         ArtistModule
     ],
-    providers: [ArtistService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

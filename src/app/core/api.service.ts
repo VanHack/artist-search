@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 
+import 'rxjs/add/observable/throw';
+
 import { Base } from '../models/base';
 
 import { environment } from '../../environments/environment';

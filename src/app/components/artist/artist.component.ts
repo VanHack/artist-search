@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { Artist } from '../../models/artist/artist';
@@ -14,7 +15,8 @@ export class ArtistComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private eventService: EventService
+        private eventService: EventService,
+        private titleService: Title
     ) { }
 
     public artist: Artist;
@@ -23,6 +25,8 @@ export class ArtistComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe((data: { user: Artist }) => {
             this.artist = data.user;
+
+            this.titleService.setTitle(this.artist.name + ' | Home24 - Frontend Challenge');
 
             if (this.artist.upcoming_event_count > 0) {
                 this.searchEvents();

@@ -1,12 +1,20 @@
-<div class="card">
-    <div class="card-body">
-        <form class="row" role="form" [formGroup]="formSearch" (ngSubmit)="onSubmit()">
-            <div class="col-sm-10">
-                <input type="text" formControlName="keyword" i18n-placeholder placeholder="Search for artist name">
+<div class="content-home">
+    <div class="content-fluid">
+        <div class="card home-box mx-auto p-3">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img src="assets/img/home24-logo.svg" width="150">
+                    <h1>Frontend Challenge</h1>
+                </div>
+
+                <form class="text-center" role="form" [formGroup]="formSearch" (ngSubmit)="onSubmit()">
+                    <input type="text" class="input-lg" formControlName="keyword" i18n-placeholder placeholder="Search touring artists">
+
+                    <button [disabled]="!formSearch.valid" type="submit" class="btn-search">
+                        <i class="fa fa-lg fa-search"></i>
+                    </button>
+                </form>
             </div>
-            <div class="col-sm-2">
-                <button [disabled]="!formSearch.valid" type="submit" i18n>Search</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

@@ -6,7 +6,7 @@
     <div class="pull-right">
         <form class="mt-2" role="form" [formGroup]="formSearch" (ngSubmit)="onSubmit()">
             <input type="text" formControlName="keyword" class="input-lg" i18n-placeholder placeholder="Search touring artists">
-            <button [disabled]="!formSearch.valid" type="submit" class="btn-search">
+            <button [disabled]="!formSearch.valid" type="submit" class="btn-search" i18n-title title="Search">
                 <i class="fa fa-lg fa-search"></i>
             </button>
         </form>

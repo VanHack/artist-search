@@ -4,9 +4,9 @@
         <h1><i class="fa fa-ellipsis-v text-muted"></i> Frontend Challenge</h1>
     </div>
     <div class="pull-right">
-        <form class="mt-2" role="form">
-            <input type="text" class="input-lg" i18n-placeholder placeholder="Search touring artists">
-            <button type="submit" class="btn-search">
+        <form class="mt-2" role="form" [formGroup]="formSearch" (ngSubmit)="onSubmit()">
+            <input type="text" formControlName="keyword" class="input-lg" i18n-placeholder placeholder="Search touring artists">
+            <button [disabled]="!formSearch.valid" type="submit" class="btn-search">
                 <i class="fa fa-lg fa-search"></i>
             </button>
         </form>

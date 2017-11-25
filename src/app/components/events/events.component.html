@@ -18,10 +18,10 @@
                     <td>{{ event.datetime | date:'mediumDate' }}</td>
                     <td>
                         <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-default" i18n-title title="View on map">
+                            <button type="button" class="btn btn-default" i18n-title title="View on map" (click)="openMapLocation(event.venue)">
                                 <i class="fa fa-map"></i>
                             </button>
-                            <button type="button" class="btn btn-default" i18n-title title="View event">
+                            <button type="button" class="btn btn-default" i18n-title title="View event" (click)="openEvent(event.url)">
                                 <i class="fa fa-external-link"></i>
                             </button>
                         </div>
@@ -29,5 +29,23 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div class="modal fade" bsModal #mapModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left" i18n>{{ eventInfo.name }}</h4>
+                <button type="button" class="close pull-right" (click)="mapModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <agm-map #mapView [latitude]="eventInfo.lat" [longitude]="eventInfo.lng">
+                    <agm-marker [latitude]="eventInfo.lat" [longitude]="eventInfo.lng"></agm-marker>
+                </agm-map>
+            </div>
+        </div>
     </div>
 </div>

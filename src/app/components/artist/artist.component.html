@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-10">
         <app-events *ngIf="artist.events && !loadingEvents" [events]="artist.events"></app-events>
-        <div *ngIf="loadingEvents" i18n>Loading events...</div>
-        <div *ngIf="artist.upcoming_event_count == 0" i18n>No upcoming events</div>
+        <div *ngIf="loadingEvents" class="loading-events text-center text-secondary"><em i18n>Loading events...</em></div>
+        <div *ngIf="artist.upcoming_event_count == 0" class="no-upcoming text-center text-secondary" i18n>No upcoming events</div>
     </div>
 </div>

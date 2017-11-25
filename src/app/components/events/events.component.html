@@ -1,4 +1,33 @@
-<p *ngIf="events.length > 0">
-  events works!
-</p>
-<p *ngIf="events.length == 0">No upcoming events</p>
+<h5 i18n>Upcoming events <span class="numb-events text-muted">({{ events.length }})</span></h5>
+
+<div class="card">
+    <div class="card-block">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th i18n>Venue</th>
+                    <th i18n>Location</th>
+                    <th i18n>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of events">
+                    <td class="bold">{{ event.venue.name }}</td>
+                    <td>{{ event.venue.city }}, {{ event.venue.country }}</td>
+                    <td>{{ event.datetime | date:'mediumDate' }}</td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default" i18n-title title="View on map">
+                                <i class="fa fa-map"></i>
+                            </button>
+                            <button type="button" class="btn btn-default" i18n-title title="View event">
+                                <i class="fa fa-external-link"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

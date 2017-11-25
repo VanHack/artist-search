@@ -23,7 +23,10 @@ export class ArtistComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe((data: { user: Artist }) => {
             this.artist = data.user;
-            //this.searchEvents();
+
+            if (this.artist.upcoming_event_count > 0) {
+                this.searchEvents();
+            }
         });
     }
 

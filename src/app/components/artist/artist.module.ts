@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ArtistComponent } from './artist.component';
 import { EventsComponent } from '../events/events.component';
@@ -13,7 +14,8 @@ import { EventService } from '../../models/event/event.service';
         EventsComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        ModalModule.forRoot()
     ],
     exports: [
         ArtistComponent,

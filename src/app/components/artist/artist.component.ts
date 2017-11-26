@@ -27,6 +27,8 @@ export class ArtistComponent implements OnInit {
 
     ngOnInit() {
         this.route.data.subscribe((data: { user: Artist }) => {
+            localStorage.setItem('lastArtist', JSON.stringify(data.user));
+
             this.artist = data.user;
 
             this.asyncLoadCover(data.user.thumb_url);
@@ -58,6 +60,8 @@ export class ArtistComponent implements OnInit {
         this.eventService.upcomingByArtist(this.artist)
             .subscribe(
                 response => {
+                    localStorage.setItem('lastArtistEvents', JSON.stringify(response));
+
                     this.loadingEvents = false;
                     this.artist.events = response;
                 },

@@ -41,19 +41,9 @@ export class ArtistComponent implements OnInit {
         });
     }
 
-    private asyncLoadCover(path: string) {
-        this.loadingCover = true;
-
-        const asyncImage = new Image();
-
-        asyncImage.onload = () => {
-            this.loadingCover = false;
-            this.coverImage.nativeElement.src = path;
-        };
-
-        asyncImage.src = path;
-    }
-
+    /**
+     * Load artist upcoming events
+     */
     searchEvents() {
         this.loadingEvents = true;
 
@@ -70,6 +60,24 @@ export class ArtistComponent implements OnInit {
                     console.error(error);
                 }
             );
+    }
+
+    /**
+     * Asynchronous load cover image
+     *
+     * @param {string} path
+     */
+    private asyncLoadCover(path: string) {
+        this.loadingCover = true;
+
+        const asyncImage = new Image();
+
+        asyncImage.onload = () => {
+            this.loadingCover = false;
+            this.coverImage.nativeElement.src = path;
+        };
+
+        asyncImage.src = path;
     }
 
 }

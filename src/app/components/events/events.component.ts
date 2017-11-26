@@ -40,6 +40,11 @@ export class EventsComponent implements OnInit {
         });
     }
 
+    /**
+     * Shows maps view with venue location
+     *
+     * @param {Venue} venue
+     */
     openMapLocation(venue: Venue) {
         this.eventInfo = {
             name: venue.name,
@@ -50,6 +55,11 @@ export class EventsComponent implements OnInit {
         this.mapModal.show();
     }
 
+    /**
+     * Open url on new window
+     *
+     * @param {string} url
+     */
     openWindow(url: string) {
         window.open(url);
     }

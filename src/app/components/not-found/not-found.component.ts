@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,12 +12,15 @@ export class NotFoundComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private titleService: Title
     ) { }
 
     public formSearch: FormGroup;
 
     ngOnInit() {
+        this.titleService.setTitle('Oops! | Home24 - Frontend Challenge');
+
         this.formSearch = this.formBuilder.group({
             keyword: ['', [Validators.required]]
         });

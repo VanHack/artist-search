@@ -1,7 +1,7 @@
 <div class="row content">
-    <div class="col-sm-2">
+    <div class="col-12 col-lg-4 col-xl-2 mb-3">
         <div class="text-center">
-            <span class="thumbnail-wrapper">
+            <span class="thumbnail-wrapper mx-auto">
                 <p [hidden]="!loadingCover"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></p>
                 <a [hidden]="loadingCover" [href]="artist.image_url" (click)="imgModal.show(); false"><img #coverImage src="assets/img/default-cover.png" onError="this.src='assets/img/default-cover.png';" alt=""></a>
                 <h2 class="artist-name">{{ artist.name }}</h2>
@@ -14,7 +14,7 @@
             </a>
         </div>
     </div>
-    <div class="col-sm-10">
+    <div class="col-12 col-lg-8 col-xl-10">
         <app-events *ngIf="artist.events && !loadingEvents" [events]="artist.events"></app-events>
         <div *ngIf="loadingEvents" class="loading-events text-center text-secondary"><em i18n>Loading events...</em></div>
         <div *ngIf="artist.upcoming_event_count == 0" class="no-upcoming text-center text-secondary" i18n>No upcoming events</div>

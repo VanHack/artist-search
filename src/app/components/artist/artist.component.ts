@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
@@ -19,12 +19,17 @@ export class ArtistComponent implements OnInit {
         private titleService: Title
     ) { }
 
+    @ViewChild('coverImage') coverImage: ElementRef;
+
     public artist: Artist;
-    public loadingEvents: boolean;
+    public loadingEvents: boolean = false;
+    public loadingCover: boolean = true;
 
     ngOnInit() {
         this.route.data.subscribe((data: { user: Artist }) => {
             this.artist = data.user;
+
+            this.asyncLoadCover(data.user.thumb_url);
 
             this.titleService.setTitle(this.artist.name + ' | Home24 - Frontend Challenge');
 
@@ -32,6 +37,19 @@ export class ArtistComponent implements OnInit {
                 this.searchEvents();
             }
         });
+    }
+
+    private asyncLoadCover(path: string) {
+        this.loadingCover = true;
+
+        const asyncImage = new Image();
+
+        asyncImage.onload = () => {
+            this.loadingCover = false;
+            this.coverImage.nativeElement.src = path;
+        };
+
+        asyncImage.src = path;
     }
 
     searchEvents() {

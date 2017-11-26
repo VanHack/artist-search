@@ -2,7 +2,8 @@
     <div class="col-sm-2">
         <div class="text-center">
             <span class="thumbnail-wrapper">
-                <a [href]="artist.image_url" (click)="imgModal.show(); false"><img [src]="artist.thumb_url" src="assets/img/default-cover.png" alt=""></a>
+                <p [hidden]="!loadingCover"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></p>
+                <a [hidden]="loadingCover" [href]="artist.image_url" (click)="imgModal.show(); false"><img #coverImage src="assets/img/default-cover.png" onError="this.src='assets/img/default-cover.png';" alt=""></a>
                 <h2 class="artist-name">{{ artist.name }}</h2>
             </span>
             <a *ngIf="artist.facebook_page_url" class="facebook-icon" [href]="artist.facebook_page_url">

@@ -17,13 +17,23 @@
                     <td>{{ event.venue.city }}, {{ event.venue.country }}</td>
                     <td>{{ event.datetime | date:'mediumDate' }}</td>
                     <td>
-                        <div class="btn-group pull-right">
+                        <div class="btn-group pull-right" dropdown>
                             <button type="button" class="btn btn-default" i18n-title title="View on map" (click)="openMapLocation(event.venue)">
                                 <i class="fa fa-map"></i>
                             </button>
-                            <button type="button" class="btn btn-default" i18n-title title="View event" (click)="openEvent(event.url)">
+                            <button type="button" class="btn btn-default" i18n-title title="View event" (click)="openWindow(event.url)">
                                 <i class="fa fa-external-link"></i>
                             </button>
+                            <button *ngIf="event.offers.length > 0" dropdownToggle type="button" class="btn btn-default dropdown-toggle" i18n-title title="Offers">
+                                <i class="fa fa-ticket"></i>
+                            </button>
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li *ngFor="let offer of event.offers" role="menuitem">
+                                    <a class="dropdown-item" [href]="offer.url" (click)="openWindow(offer.url); $event.preventDefault();">
+                                        <i class="fa fa-circle mr-1" [ngClass]="offer.status != 'available' ? 'text-danger' : 'text-success'"></i> {{ offer.type }}
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </td>
                 </tr>

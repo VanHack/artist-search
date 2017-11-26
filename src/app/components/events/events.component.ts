@@ -50,7 +50,7 @@ export class EventsComponent implements OnInit {
         this.mapModal.show();
     }
 
-    openEvent(url: string) {
+    openWindow(url: string) {
         window.open(url);
     }
 

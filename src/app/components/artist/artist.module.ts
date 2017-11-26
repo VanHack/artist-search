@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 import { ArtistComponent } from './artist.component';
@@ -17,6 +18,7 @@ import { EventService } from '../../models/event/event.service';
     imports: [
         CommonModule,
         ModalModule.forRoot(),
+        BsDropdownModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAL315fevpglaQBkqWU9Cd4kHVzrX_492s'
         })
